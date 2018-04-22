@@ -46,6 +46,14 @@ export default {
     height: 100%;
     width: 100%;
   }
+  div.resizable {
+    min-height: 30px;
+    min-width: 30px;
+    resize: vertical;
+    overflow: auto;
+    max-height: fit-content;
+    max-width: fit-content;
+  }
   #app {
     display: flex;
     flex-direction: column;
@@ -80,6 +88,7 @@ export default {
       }
       #app-main-view-resources {
         border-top: 1px solid;
+        min-height: 15em;
       }
     }
   }

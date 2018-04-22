@@ -1,5 +1,5 @@
 <template lang="html">
-  <canvas id="canas" height="200" width="200"></canvas>
+  <canvas id="canas" height="600" width="1300"></canvas>
 </template>
 
 <script>

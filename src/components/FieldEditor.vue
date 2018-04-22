@@ -1,11 +1,11 @@
 <template lang="html">
   <div id="field-editor">
-    <div v-if="model">
-      <div class="form-group" v-for="(field, index) in model"
-        :key="index">
-        <label>{{ index }}</label>
-        <input class="form-control" :value="field">
-      </div>
+    <div class="form-group"
+      v-if="model"
+      v-for="(field, index) in model"
+      :key="index">
+      <label>{{ index }}</label>
+      <input class="form-control" :value="field">
     </div>
     <div v-else>
       no data
@@ -21,16 +21,11 @@ export default {
 
 <style lang="scss">
   #field-editor {
-    align-items: flex-start;
+    min-height: 100px;
     display: flex;
-    & > div {
-      flex-grow: 1;
-      overflow-y: scroll;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+    overflow-y: scroll;
+    flex-direction: column;
+    align-items: center;
     .form-group {
       padding: 0 1em;
       width: 100%;
