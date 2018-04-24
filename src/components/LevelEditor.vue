@@ -1,5 +1,5 @@
 <template lang="html">
-  <canvas id="canas" height="600" width="1300"></canvas>
+  <canvas id="canas" height="300" width="1300"></canvas>
 </template>
 
 <script>
@@ -8,20 +8,20 @@ import paper from 'paper'
 export default {
   data () {
     return {
-      tool: null
+      tool: null,
+      levelMap: null,
+      selectedPoint: null
     }
   },
   mounted () {
+    this.$store.dispatch('renderLevel')
     paper.setup(document.getElementById('canvas'))
     this.tool = new paper.Tool()
-    this.tool.onMouseDown = function(event) {
-      console.log(event.point)
-        var path = new paper.Path.Circle({
-            center: event.point,
-            radius: 5,
-            fillColor: 'black'
-        });
+    this.tool.onMouseDown = ({ point }) => {
+      this.$store.commit('setSelectedPoint', point)
     }
+  },
+  methods: {
   }
 }
 </script>

@@ -1,14 +1,17 @@
 <template>
   <div id="app" class="container-fluid">
+    <modal/>
     <div class="row">
       <div id="app-left-bar" class="col-2 p-0">
-        <object-list/>
+        <div>
+          <buttondata-toggle="modal" data-target="#modal" @click="$store.commit('showModal')">load level</button>
+        </div>
         <field-editor :model="this.$store.getters.object"/>
       </div>
       <div id="app-main-view" class="col p-0">
         <div id="app-main-view-level-editor">
-          <level-editor id="canvas"/>
-          <field-editor :model="this.$store.getters.level.settings"/>
+          <level-editor v-if="$store.getters.level" id="canvas"/>
+            <!-- <field-editor :model="this.$store.getters.level.settings"/> --> 
         </div>
         <resources id="app-main-view-resources"/>
       </div>
@@ -17,6 +20,7 @@
 </template>
 
 <script>
+import Modal from './components/Modal/index'
 import ObjectList from './components/ObjectList'
 import FieldEditor from './components/FieldEditor'
 import LevelEditor from './components/LevelEditor'
@@ -25,18 +29,11 @@ import Resources from './components/Resources'
 export default {
   name: 'app',
   components: {
+    Modal,
     ObjectList,
     LevelEditor,
     FieldEditor,
     Resources
-  },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
-  created () {
-
   }
 }
 </script>
