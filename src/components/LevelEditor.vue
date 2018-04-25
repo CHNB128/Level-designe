@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('renderLevel')
+    // this.$store.dispatch('renderLevel')
     paper.setup(document.getElementById('canvas'))
     this.tool = new paper.Tool()
     this.tool.onMouseDown = ({ point }) => {

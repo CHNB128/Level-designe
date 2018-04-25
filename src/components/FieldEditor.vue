@@ -8,7 +8,10 @@
         <label>{{ index }}</label>
       </div>
       <div class="">
-        <input :value="field">
+        <input
+          class="form-control"
+          :value="field"
+          @change="onValueChange($event, index)">
       </div>
     </div>
     <div v-else>
@@ -19,7 +22,12 @@
 
 <script>
 export default {
-  props: ['model']
+  props: ['model'],
+  methods: {
+    onValueChange (event, key) {
+      console.log(event, key)
+    }
+  }
 }
 </script>
 

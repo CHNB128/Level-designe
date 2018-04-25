@@ -3,15 +3,13 @@
     <modal/>
     <div class="row">
       <div id="app-left-bar" class="col-2 p-0">
-        <div>
-          <buttondata-toggle="modal" data-target="#modal" @click="$store.commit('showModal')">load level</button>
-        </div>
+        <field-editor :model="this.$store.getters.settings"/>
         <field-editor :model="this.$store.getters.object"/>
       </div>
       <div id="app-main-view" class="col p-0">
+        <tool-bar/>
         <div id="app-main-view-level-editor">
-          <level-editor v-if="$store.getters.level" id="canvas"/>
-            <!-- <field-editor :model="this.$store.getters.level.settings"/> --> 
+          <level-editor id="canvas"/>
         </div>
         <resources id="app-main-view-resources"/>
       </div>
@@ -21,6 +19,7 @@
 
 <script>
 import Modal from './components/Modal/index'
+import ToolBar from './components/ToolBar'
 import ObjectList from './components/ObjectList'
 import FieldEditor from './components/FieldEditor'
 import LevelEditor from './components/LevelEditor'
@@ -30,6 +29,7 @@ export default {
   name: 'app',
   components: {
     Modal,
+    ToolBar,
     ObjectList,
     LevelEditor,
     FieldEditor,
