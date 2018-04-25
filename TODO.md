@@ -1,5 +1,6 @@
 # TODO
-* create function to select object for edit
-* make tree view in object list
+* make viewport for canvas
+* make load level function
+* make multi-object select for level editor
 * make adaptive canvas
-* make resources panel 
+* make resources panel
