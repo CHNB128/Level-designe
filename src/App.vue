@@ -8,8 +8,11 @@
       </div>
       <div id="app-main-view" class="col p-0">
         <tool-bar/>
-        <div id="app-main-view-level-editor">
-          <level-editor id="canvas"/>
+        <div class="d-flex">
+          <div id="app-main-view-level-editor">
+            <level-editor id="canvas"/>
+          </div>
+          <layer-editor/>
         </div>
         <resources id="app-main-view-resources"/>
       </div>
@@ -23,6 +26,7 @@ import ToolBar from './components/ToolBar'
 import ObjectList from './components/ObjectList'
 import FieldEditor from './components/FieldEditor'
 import LevelEditor from './components/LevelEditor'
+import LayerEditor from './components/LayerEditor'
 import Resources from './components/Resources'
 
 export default {
@@ -30,6 +34,7 @@ export default {
   components: {
     Modal,
     ToolBar,
+    LayerEditor,
     ObjectList,
     LevelEditor,
     FieldEditor,
@@ -41,6 +46,9 @@ export default {
 <style lang="scss">
   html, body, #app {
     height: 100%;
+    width: 100%;
+  }
+  #canvas {
     width: 100%;
   }
   div.resizable {
@@ -79,13 +87,11 @@ export default {
         flex-grow: 1;
         display: flex;
         justify-content: space-between;
-        #field-editor {
-          border-left: 1px solid;
-        }
       }
       #app-main-view-resources {
+        flex-grow: 0;
         border-top: 1px solid;
-        min-height: 15em;
+        max-height: 10em;
       }
     }
   }

@@ -17,7 +17,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <load-level/>
+          <load-level v-if="$store.state.modal.type = 'load-level'"/>
+          <!--          <load-level v-if="$store.state.modal.type = 'save-level'"/> -->
         </div>
       </div>
     </div>

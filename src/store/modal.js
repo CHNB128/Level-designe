@@ -1,9 +1,10 @@
 const state = {
-
+  type: null
 }
 
 const mutations = {
-  showModal () {
+  showModal (state, type) {
+    state.type = type
     $('#modal').modal('show')
   },
   hideModal () {

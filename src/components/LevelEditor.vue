@@ -1,5 +1,5 @@
 <template lang="html">
-  <canvas id="canas" height="300" width="1300"></canvas>
+  <canvas resize id="canas" height="300" width="1300"></canvas>
 </template>
 
 <script>
@@ -8,17 +8,25 @@ import paper from 'paper'
 export default {
   data () {
     return {
-      tool: null,
       levelMap: null,
       selectedPoint: null
     }
   },
+  created () {
+    paper.install(window)
+  },
   mounted () {
-    // this.$store.dispatch('renderLevel')
-    paper.setup(document.getElementById('canvas'))
-    this.tool = new paper.Tool()
-    this.tool.onMouseDown = ({ point }) => {
-      this.$store.commit('setSelectedPoint', point)
+    let tool = new paper.Tool()
+    this.$store.commit('initProject')
+    tool.onMouseDown = ({ point, item }) => {
+      project.activeLayer.selected = false
+      if (item) {
+        item.selected = true
+        this.$store.commit('setSelectedItem', item)
+      }
+    }
+    tool.onMouseDrag = (event) => {
+      project.activeLayer.translate(event.delta)
     }
   },
   methods: {

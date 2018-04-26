@@ -25,7 +25,10 @@ export default {
   props: ['model'],
   methods: {
     onValueChange (event, key) {
-      console.log(event, key)
+      console.log(this.model)
+      console.log(event.target.value)
+      this.model[key] = event.target.value
+      console.log(this.model)
     }
   }
 }

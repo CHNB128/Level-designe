@@ -2,8 +2,13 @@
   <div id="tool-bar">
     <button
       class="btn btn-outline-secondary"
-      @click="$store.commit('showModal')">
+      @click="$store.commit('showModal', 'load-level')">
       load level
+    </button>
+    <button
+      class="btn btn-outline-secondary"
+      @click="$store.dispatch('saveLevel')">
+      save level
     </button>
   </div>
 </template>
