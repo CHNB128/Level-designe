@@ -1,21 +1,18 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app">
     <modal/>
-    <div class="row">
-      <div id="app-left-bar" class="col-2 p-0">
+    <div id="app-main-view">
+      <div id="app-left-bar">
         <field-editor :model="this.$store.getters.settings"/>
         <field-editor :model="this.$store.getters.object"/>
       </div>
-      <div id="app-main-view" class="col p-0">
+      <div id="app-workspace">
         <tool-bar/>
-        <div class="d-flex">
-          <div id="app-main-view-level-editor">
-            <level-editor id="canvas"/>
-          </div>
-          <layer-editor/>
+        <div id="app-main-view-level-editor">
+          <level-editor id="canvas"/>
         </div>
-        <resources id="app-main-view-resources"/>
       </div>
+      <layer-editor/>
     </div>
   </div>
 </template>
@@ -44,31 +41,20 @@ export default {
 </script>
 
 <style lang="scss">
-  html, body, #app {
+  html, body, #app, #canvas, #app-main-view {
     height: 100%;
     width: 100%;
   }
   #canvas {
     width: 100%;
   }
-  div.resizable {
-    min-height: 30px;
-    min-width: 30px;
-    resize: vertical;
-    overflow: auto;
-    max-height: fit-content;
-    max-width: fit-content;
-  }
-  #app {
-    display: flex;
-    flex-direction: column;
-    & > div {
-      flex-grow: 1;
-    }
-    #app-left-bar  {
-      border-right: 1px solid;
+  #app-main-view {
+    display: grid;
+    grid-template-columns: 20% auto 18%;
+    #app-left-bar {
       display: flex;
       flex-direction: column;
+      border-right: 1px solid;
       & > div {
         flex-grow: 1;
         border-bottom: 1px solid;
@@ -77,21 +63,11 @@ export default {
         }
       }
     }
-    #app-right-bar {
-      border-left: 1px solid;
-    }
-    #app-main-view {
-      display: flex;
-      flex-direction: column;
-      #app-main-view-level-editor {
-        flex-grow: 1;
-        display: flex;
-        justify-content: space-between;
-      }
-      #app-main-view-resources {
-        flex-grow: 0;
+    #app-workspace {
+      display: grid;
+      grid-template-rows: min-content auto;
+      #app-workspace-resources {
         border-top: 1px solid;
-        max-height: 10em;
       }
     }
   }

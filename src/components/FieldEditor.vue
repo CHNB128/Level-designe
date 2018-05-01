@@ -2,16 +2,29 @@
   <div id="field-editor">
     <div class="field"
       v-if="model"
-      v-for="(field, index) in model"
-      :key="index">
-      <div class="">
-        <label>{{ index }}</label>
+      v-for="(field, fieldIndex) in model"
+      :key="fieldIndex">
+      <div class="label">
+        <label>{{ fieldIndex }}</label>
       </div>
-      <div class="">
+      <div class="input">
+        <div v-if="typeof field == 'object'">
+          <select
+            class="form-control"
+            @change="onValueChange">
+            <option 
+              v-for="(item, itemIndex) in field.able"
+              :key="itemIndex"
+              :value="itemIndex"
+              placeholder=""
+              :selected="field.value == itemIndex">{{ itemIndex }}</option>
+          </select>
+        </div>
         <input
+          v-else
           class="form-control"
           :value="field"
-          @change="onValueChange($event, index)">
+          @change="onValueChange($event, fieldIndex)">
       </div>
     </div>
     <div v-else>
@@ -36,18 +49,18 @@ export default {
 
 <style lang="scss">
   #field-editor {
-    height: 100px;
     display: flex;
-    overflow-y: scroll;
     flex-direction: column;
-    align-items: center;
+    overflow-y: scroll;
     .field {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
+      display: grid;
+      grid-template-columns: 50% 50%;
       .label {
         display: flex;
         justify-content: center;
+      }
+      .input {
+      
       }
     }
   }

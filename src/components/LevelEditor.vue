@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import paper from 'paper'
-
 export default {
   data () {
     return {
@@ -12,11 +10,8 @@ export default {
       selectedPoint: null
     }
   },
-  created () {
-    paper.install(window)
-  },
   mounted () {
-    let tool = new paper.Tool()
+    let tool = new Tool()
     this.$store.commit('initProject')
     tool.onMouseDown = ({ point, item }) => {
       project.activeLayer.selected = false

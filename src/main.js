@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue'
+import paper from 'paper'
+
+paper.install(window)
 
 import App from './App.vue'
 import store from './store'

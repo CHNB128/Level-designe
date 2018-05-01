@@ -13,7 +13,13 @@ export default new Vuex.Store({
       blockBorderColor: '#555'
     },
     resources: null,
-    selectedObject: null
+    selectedObject: null,
+    minionList: {
+      player: {
+        sprite: null
+      }
+    },
+    spriteList: [],
   },
   getters: {
     object: state => {
@@ -46,9 +52,19 @@ export default new Vuex.Store({
             new paper.Size(size, size))
           path.fillColor = mainColor
           path.strokeColor = borderColor
-          path.payload = {
+          path.meta = {
             x: x,
             y: y,
+          }
+          path.payload = {
+            sprite: {
+              value: null,
+              able: state.spriteList
+            },
+            spawnPoint: {
+              value: null,
+              able: state.minionList
+            }
           }
         }
       }
@@ -59,7 +75,8 @@ export default new Vuex.Store({
     },
     saveLevel ({ state }) {
       let result = {
-        resources: null,
+        resources: state.spriteList,
+        minions: state.minionList,
         units: []
       }
       result.resources = state.resources

@@ -4,11 +4,25 @@
       <button class="btn btn btn-outline-secondary">+</button>
       <button class="btn btn btn-outline-secondary">-</button>
     </div>
+    <div>
+      <div v-for="(item, index) in layers">
+        {{ item + ' ' + index }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-
+export default {
+  mounted () {
+    console.log(project)
+  },
+  computed: {
+    layers () {
+      return project
+    }
+  }
+}
 </script>
 
 <style lang="scss">
